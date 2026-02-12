@@ -1,8 +1,7 @@
 # MarsAir - Bug Report
 
 > Generated from automated test runs on 2026-02-12  
-> **Total: 31 tests | 20 passed | 11 failed** (first run)  
-> **Promo re-run: 8 tests | 6 passed | 2 failed** (after fixing return date)
+> **Total: 33 tests | 26 passed | 7 failed**
 
 ---
 
@@ -137,3 +136,38 @@ The requirement specifies the message *"Seats available! Call 0800 MARSAIR to bo
 
 **Actual Result:**  
 `"Seats available! Call now on 0800 MARSAIR to book!"`
+
+---
+
+## BUG-006: Background image is not responsive
+
+- **Severity:** Low
+- **Requirement:** General UI/UX
+- **Test Cases:** N/A (visual/CSS issue)
+
+**Description:**  
+The background image (`/assets/bg.jpg`) is not responsive. The CSS sets `background: url("/assets/bg.jpg")` on `body#app` without any `background-size`, `background-repeat`, or `background-position` properties. This causes the image to tile/repeat at its native resolution rather than scaling to fit the viewport. Additionally, the content wrapper (`#wrapper`) has a fixed `width: 500px` with no responsive breakpoints or media queries, making the layout break on smaller screens.
+
+**Root Cause (CSS):**
+```css
+body#app {
+  background: url("/assets/bg.jpg");
+  /* Missing: background-size: cover; */
+  /* Missing: background-position: center; */
+  /* Missing: background-repeat: no-repeat; */
+}
+
+body#app #wrapper {
+  width: 500px;  /* Fixed width, not responsive */
+  /* Missing: max-width or media queries */
+}
+```
+
+**Expected Behavior:**  
+- Background image should scale to cover the entire viewport on all screen sizes
+- Layout should adapt to smaller screens (mobile, tablet)
+
+**Actual Behavior:**  
+- Background image tiles/repeats at native resolution
+- Content wrapper overflows on viewports narrower than 500px
+
