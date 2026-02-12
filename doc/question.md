@@ -2,6 +2,16 @@
 
 ---
 
+## Bug Severity Definitions
+
+| Level | Definition |
+|-------|------------|
+| **Critical** | Core functionality is broken. The feature does not work as specified and there is no workaround. Users are directly impacted and cannot complete key tasks. |
+| **High** | A feature is broken or missing, but a workaround exists. The issue significantly affects user experience but does not completely block the workflow. |
+| **Low** | Cosmetic or minor wording issues. The feature works correctly but the output does not exactly match the specification (e.g. text differences, styling). |
+
+---
+
 ## 🔍 #2 — Promotional Codes: Check digit calculation is ambiguous
 
 The requirement says:

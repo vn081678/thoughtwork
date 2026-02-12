@@ -8,7 +8,7 @@
 
 ## BUG-001: Same departure and return month does not show invalid schedule error
 
-- **Severity:** High
+- **Severity:** Critical
 - **Requirement:** #4 — Invalid Return Dates
 - **Test Cases:** TC-4.1/4.2
 
@@ -35,7 +35,7 @@ When the user selects the same month for both Departing and Returning (e.g., Jul
 
 ## BUG-002: Return date before departure does not show invalid schedule error
 
-- **Severity:** High
+- **Severity:** Critical
 - **Requirement:** #4 — Invalid Return Dates
 - **Test Cases:** TC-4.1/4.2
 
@@ -58,7 +58,7 @@ When the user selects a return date that is chronologically before the departure
 
 ## BUG-003: "Book a ticket to the red planet now!" text is not a clickable link
 
-- **Severity:** Medium
+- **Severity:** High
 - **Requirement:** #3 — Link to Home Page
 - **Test Cases:** TC-3.2
 
@@ -80,7 +80,7 @@ Nothing happens. The text is not a link (timeout after 30s waiting for click act
 
 ## BUG-004: Valid promotional codes JJ5-OPQ-320 and XX2-YZA-640 are rejected as invalid
 
-- **Severity:** High
+- **Severity:** Critical
 - **Requirement:** #2 — Promotional Codes
 - **Test Cases:** TC-2.1, TC-2.5
 
