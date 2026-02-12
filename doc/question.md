@@ -2,7 +2,7 @@
 
 ---
 
-## Bug Severity Definitions
+## Bug Severity Definitions (assumed)
 
 | Level | Definition |
 |-------|------------|
@@ -46,4 +46,20 @@ But `JJ5-OPQ-320` (from the requirement's own example!) was rejected by the app 
 
 
 
-1. **#2 — Promo code with seats available vs no seats**: We should verify that the promo discount message appears regardless of seat availability.
+1. **Promo code with seats available vs no seats**: We should verify that the promo discount message appears regardless of seat availability. Currently we can only test promo codes on routes with seats — if a promo code is applied on a "no seats" route, does the discount still display? This is unclear from the requirement.
+
+2. **One-way ticket support**: The app currently assumes round-trip travel (departure + return). There is no option for a one-way ticket. Consider:
+   - Adding a "One way" checkbox or trip type selector
+   - Disabling/hiding the return field when one-way is selected
+   - Clarifying in the requirements if one-way trips are in scope
+
+3. **Required field validation before submit**: The form currently allows submitting with default "Select..." values. Consider:
+   - Adding required field indicators (e.g., asterisk `*`) on Departing and Returning
+   - Showing inline validation messages (e.g., "Please select a departure date") when submitting without selections
+   - Disabling the Search button until both fields are selected
+
+4. **Error handling for edge cases**: Consider testing and handling:
+   - What happens when both Departing and Returning are left as "Select..."
+   - What happens when only one field is selected
+   - Special characters or SQL injection attempts in the promo code field
+

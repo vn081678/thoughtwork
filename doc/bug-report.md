@@ -171,3 +171,38 @@ body#app #wrapper {
 - Background image tiles/repeats at native resolution
 - Content wrapper overflows on viewports narrower than 500px
 
+---
+
+## BUG-007: SQL injection vulnerability in promotional code field
+
+- **Severity:** Critical
+- **Requirement:** #2 — Promotional Codes (security)
+- **Test Cases:** N/A (security testing)
+
+**Description:**  
+Entering a single quote character (`'`) in the promotional code field causes the application to display *"The system performed an illegal operation."* instead of the expected validation message *"Sorry, code ' is not valid"*. This strongly suggests the input is not sanitized and is being passed directly into a SQL query, making the application vulnerable to SQL injection attacks.
+
+**Steps to Reproduce:**
+1. Navigate to the MarsAir home page
+2. Select **"July"** from Departing
+3. Select **"December (two years from now)"** from Returning
+4. Enter `'` (single quote) in the promotional code field
+5. Click **Search**
+
+**Expected Result:**  
+`"Sorry, code ' is not valid"`
+
+**Actual Result:**  
+`"The system performed an illegal operation."`
+
+**Security Impact:**  
+SQL injection can allow attackers to:
+- Read sensitive data from the database
+- Modify or delete data
+- Bypass authentication
+- Execute administrative operations
+
+**Recommended Fix:**  
+- Use parameterized queries / prepared statements
+- Sanitize and validate all user inputs server-side
+- Never concatenate user input directly into SQL strings
